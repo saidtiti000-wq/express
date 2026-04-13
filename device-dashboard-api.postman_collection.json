@@ -1,0 +1,83 @@
+{
+  "info": {
+    "name": "Device Dashboard API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000"
+    },
+    {
+      "key": "equipmentId",
+      "value": ""
+    }
+  ],
+  "item": [
+    {
+      "name": "GET All Equipments",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/equipments",
+        "description": "Récupère la liste de tous les équipements"
+      }
+    },
+    {
+      "name": "GET Equipment by ID",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/equipments/{{equipmentId}}",
+        "description": "Récupère un équipement par son ID MongoDB"
+      }
+    },
+    {
+      "name": "POST Create Equipment",
+      "request": {
+        "method": "POST",
+        "url": "{{baseUrl}}/equipments",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Serveur Web 01\",\n  \"type\": \"server\",\n  \"status\": \"online\",\n  \"ip\": \"192.168.1.10\",\n  \"os\": \"Ubuntu 22.04\"\n}"
+        },
+        "description": "Crée un nouvel équipement. Champs obligatoires : name, type. Facultatifs : status (online|offline|maintenance), ip, os"
+      }
+    },
+    {
+      "name": "PUT Update Equipment",
+      "request": {
+        "method": "PUT",
+        "url": "{{baseUrl}}/equipments/{{equipmentId}}",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Serveur Web 01 - MAJ\",\n  \"status\": \"maintenance\",\n  \"ip\": \"192.168.1.11\"\n}"
+        },
+        "description": "Met à jour un équipement existant. Tous les champs sont facultatifs."
+      }
+    },
+    {
+      "name": "DELETE Equipment",
+      "request": {
+        "method": "DELETE",
+        "url": "{{baseUrl}}/equipments/{{equipmentId}}",
+        "description": "Supprime un équipement par son ID"
+      }
+    }
+  ]
+}
+
+backoffice 
+OCB 
+
+SAP
